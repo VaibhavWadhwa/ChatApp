@@ -1,6 +1,6 @@
 const express=require('express');
 const socket=require('socket.io');
-const PORT=8080;
+const PORT= process.env.PORT ||8080;
 const path= require('path');
 
 const app=express();
@@ -11,7 +11,7 @@ app.get('/',(req,res)=>{
 })
 
 const server = app.listen(PORT,function(){
-    console.log("I am listening to the port 8080");
+    console.log(`I am listening to the port ${PORT}`);
 })
 
 const io = socket(server,{cors: {origin:"*"}});
